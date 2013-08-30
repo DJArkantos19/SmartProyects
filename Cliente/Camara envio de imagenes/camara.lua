@@ -29,11 +29,6 @@ function scene:createScene(event)
         btnVerImagen.y = display.contentHeight - 250
         screenGroup:insert(btnVerImagen)
 
-		btnDescarga = display.newImage("btnDescarga.png")
-        btnDescarga:setReferencePoint(display.BottomRightReferencePoint)
-        btnDescarga.x = display.contentWidth - 250
-        btnDescarga.y = display.contentHeight - 0
-        screenGroup:insert(btnDescarga)
 --
 end
 
@@ -104,35 +99,12 @@ if event.phase == "began" then
 	end
 end
 
-function descarga(event)
-if event.phase == "began" then
-
--- Load the relevant LuaSocket modules
-local http = require("socket.http")
-local ltn12 = require("ltn12")
-
--- Create local file for saving data
-local path = system.pathForFile( "hello.png", system.DocumentsDirectory )
-myFile = io.open( path, "w+b" )
-
--- Request remote file and save data to local file
-http.request{
-    url = "http://developer.anscamobile.com/demo/hello.png",
-    sink = ltn12.sink.file(myFile),
-}
-
--- Display local file
-testImage = display.newImage("hello.png",system.DocumentsDirectory,60,50);
-end
-
-end
 
 function scene:enterScene(event)
 
 	btnCamara:addEventListener("touch", camara)
         btnGaleria:addEventListener("touch", lanzarGaleria)
 		 btnVerImagen:addEventListener("touch", mostrarImagen)
-		  btnDescarga:addEventListener("touch", descarga)
 
 end
 
@@ -140,7 +112,6 @@ function scene:exitScene(event)
 	btnCamara:removeEventListener("touch", camara)
         btnGaleria:removeEventListener("touch", lanzarGaleria)
 		 btnVerImagen:addEventListener("touch", mostrarImagen)
-		  btnDescarga:addEventListener("touch", descarga)
 end
 
 function scene:destroyScene(event)
