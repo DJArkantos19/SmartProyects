@@ -42,6 +42,14 @@ end
 --~    end
 --~ end
 
+local function networkListener( event )
+        if ( event.isError ) then
+                print( "Network error!")
+        elseif ( event.phase == "ended" ) then
+                print ( "Upload complete!" )
+        end
+end
+
 
 function onComplete(event)
    if event.completed then
@@ -51,15 +59,32 @@ function onComplete(event)
 --~ 			staging_image.x = display.contentWidth/2
 --~ 			staging_image.y = display.contentHeight/2
 --~ 			group:insert(staging_image)
+
+		network.upload(
+			"http://181.55.218.31:9000",
+			"POST",
+			networkListener,
+			"reconocimientoFacial.jpg",
+			system.TemporaryDirectory,
+			"image/jpg"
+			)
+
+
+
    else
       -- User canceled out.
    end
 end
 
+
+
 function camara(event)
 
 if event.phase == "began" then
  native.showAlert( "Corona", "Ingreso camara.", { "OK" } )
+
+
+
 
 --~  local onComplete = function(event)
 --~  native.showAlert( "Corona", "Ingreso oncomplete.", { "OK" } )
@@ -79,7 +104,12 @@ native.showAlert( "Corona", "antes de rutaarchico.", { "OK" } )
 
 
 	end
+
+
 end
+
+
+
 
 function lanzarGaleria(event)
 	if event.phase == "began" then
