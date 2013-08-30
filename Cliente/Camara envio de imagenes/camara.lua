@@ -23,11 +23,11 @@ function scene:createScene(event)
         btnGaleria.y = display.contentHeight - 450
         screenGroup:insert(btnGaleria)
 
-		btnVerImagen = display.newImage("btnGaleria2.png")
-        btnVerImagen:setReferencePoint(display.BottomRightReferencePoint)
-        btnVerImagen.x = display.contentWidth - 250
-        btnVerImagen.y = display.contentHeight - 250
-        screenGroup:insert(btnVerImagen)
+--~ 		btnVerImagen = display.newImage("btnGaleria2.png")
+--~         btnVerImagen:setReferencePoint(display.BottomRightReferencePoint)
+--~         btnVerImagen.x = display.contentWidth - 250
+--~         btnVerImagen.y = display.contentHeight - 250
+--~         screenGroup:insert(btnVerImagen)
 
 --
 end
@@ -104,14 +104,14 @@ function scene:enterScene(event)
 
 	btnCamara:addEventListener("touch", camara)
         btnGaleria:addEventListener("touch", lanzarGaleria)
-		 btnVerImagen:addEventListener("touch", mostrarImagen)
+--~ 		 btnVerImagen:addEventListener("touch", mostrarImagen)
 
 end
 
 function scene:exitScene(event)
 	btnCamara:removeEventListener("touch", camara)
         btnGaleria:removeEventListener("touch", lanzarGaleria)
-		 btnVerImagen:addEventListener("touch", mostrarImagen)
+--~ 		 btnVerImagen:addEventListener("touch", mostrarImagen)
 end
 
 function scene:destroyScene(event)
